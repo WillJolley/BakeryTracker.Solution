@@ -29,8 +29,12 @@ namespace BakeryTracker.Controllers
     [HttpGet("/vendors/{id}")]
     public ActionResult Show(int id)
     {
+      Dictionary<string, object> model = new Diction<string, object>();
       Vendor foundVendor = Vendor.Find(id);
-      return View(foundVendor);
+      List<Order> vendorOrders = foundVendor.Orders;
+      model.Add("vendor", foundVendor);
+      model.Add("orders", vendorOrders);
+      return View(model);
     }
   }
 }
