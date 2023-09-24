@@ -51,8 +51,19 @@ namespace BakeryTracker.Tests
       string description2 = "cafe";
       Vendor newVendor1 = new Vendor(name1, description1);
       Vendor newVendor2 = new Vendor(name2, description2);
-      Vendor result = Category.Find(1);
+      Vendor result = Vendor.Find(1);
       Assert.AreEqual(newVendor1, result);
+    }
+
+    [TestMethod]
+    public void AddOrder_AssociatesOrderWithVendor_OrderList()
+    {
+      Order newOrder = new Order("Fresh Market", "25 batards, 40 baguettes", 300, "2023/09/24");
+      List<Order> newList = new List<Order> { newOrder };
+      Vendor newVendor = new Vendor("Fresh Market", "supermarket");
+      newVendor.AddOrder(newOrder);
+      List<Order> result = newVendor.Orders;
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
