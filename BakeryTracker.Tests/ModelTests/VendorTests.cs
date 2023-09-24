@@ -41,5 +41,18 @@ namespace BakeryTracker.Tests
       List<Vendor> result = Vendor.GetAll();
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      string name1 = "Fresh Market";
+      string name2 = "Bim Bom Cafe";
+      string description1 = "supermarket";
+      string description2 = "cafe";
+      Vendor newVendor1 = new Vendor(name1, description1);
+      Vendor newVendor2 = new Vendor(name2, description2);
+      Vendor result = Category.Find(1);
+      Assert.AreEqual(newVendor1, result);
+    }
   }
 }
