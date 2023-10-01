@@ -10,8 +10,15 @@
       crossorigin="anonymous">
   </head>
   <body>
-    <h1>Bonjour, Pierre.</h1>
-    <a href='/vendors'>View list of vendors</a>
-    <a href='/vendors/new'>Add a new vendor</a>
+    <h1>Order Details:</h1>
+    <h3>@Model["order"].Title</h3>
+    <ul>
+      <li>@Model["order"].Description</li>
+      <li>$@Model["order"].Price</li>
+      <li>@Model["date"].Date</li>
+    </ul>
+
+    <a href='vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
+    <a href='vendors'>Back to vendor list</a>
   </body>
 </html>

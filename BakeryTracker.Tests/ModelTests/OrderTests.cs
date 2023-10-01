@@ -6,8 +6,13 @@ using System;
 namespace BakeryTracker.Tests
 {
   [TestClass]
-  public class OrderTests
+  public class OrderTests : IDisposable
   {
+    public void Dispose()
+    {
+      Order.ClearAll();
+    }
+
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
@@ -16,9 +21,11 @@ namespace BakeryTracker.Tests
     }
 
     [TestMethod]
-    public void GetAll_ReturnsEmptyList_OrderList()
+    public void GetAll_ReturnsOrders_OrderList()
     {
-      List<Order> newList = new List<Order> { };
+      Order newOrder1 = new Order("test1", "test2", 1, "test3");
+      Order newOrder2 = new Order("test4", "test5", 2, "test6");
+      List<Order> newList = new List<Order> { newOrder1, newOrder2 };
       List<Order> result = Order.GetAll();
       CollectionAssert.AreEqual(newList, result);
     }
