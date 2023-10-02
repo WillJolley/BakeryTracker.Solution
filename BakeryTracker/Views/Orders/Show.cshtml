@@ -13,9 +13,9 @@
     <h1>Order Details:</h1>
     <h3>@Model["order"].Title</h3>
     <ul>
-      <li>@Model["order"].Description</li>
-      <li>$@Model["order"].Price</li>
-      <li>@Model["date"].Date</li>
+      <li>Description: @Model["order"].Description</li>
+      <li>Price: $@Model["order"].Price</li>
+      <li>Date: @Model["order"].Date</li>
     </ul>
 
     <a href='vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
